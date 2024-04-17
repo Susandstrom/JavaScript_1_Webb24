@@ -129,7 +129,6 @@ console.log("-------------------------------------------------------------------
 // modulus 5
 console.log(`
 for (let index = 0; index < 50; index++) { 
-
     if(index%2 === 0){
         console.log(index);
     }
@@ -146,11 +145,13 @@ for (let index = 0; index < 50; index++) {
 
 // nested loops
 console.log(`
-        for (let i = 0; i < 10; i++) {
-            for (let j = 0; j < 10; j++) {
-                console.log("i = " + i + " : j = " + j);
-            }
-        }
+for (let row = 0; row < 10; row++) {
+    let cell ="";
+    for (let col = 0; col < 10; col++) {
+        cell += "|" + row + " " + col + "|";
+    }
+    console.log(cell);
+}
     `);
 
 
@@ -169,17 +170,8 @@ console.log("-------------------------------------------------------------------
 
 
 
-// complex loop
+// complex xmas tree loop
 console.log(`
-        for (let i = 0; i < 10; i++) {
-            let printString = "";
-            for (let j = i; j >= 0; j--) {
-                printString = printString + "*";
-            }
-            console.log(printString);
-        }
-    `);
-
 for (let i = 0; i < 10; i++) {
     let center = 4;
     let printString = "";
@@ -193,30 +185,32 @@ for (let i = 0; i < 10; i++) {
     }
     console.log(printString);
 }
+    `);
+let max = 30
+let center = max/2;
+for (let i = 0; i < max; i++) {
+    let printString = "";
+    for (let j = 0; j < max; j++) {
+        if(j >= center+(i*-1) && j <= center+i){
+            printString = printString + "*";
+        }else{
+            printString = printString + " ";
+        }
+
+    }
+    console.log(printString);
+}
 console.log("----------------------------------------------------------------------------------------");
 
 
 
-// complex loop xmas tree
-console.log(`
-        for (let i = 0; i < 10; i++) {
-            let printString = "";
-            for (let j = i; j >= 0; j--) {
-                printString = printString + "*";
-            }
-            console.log(printString);
-        }
-    `);
+// multiplication table 5x5
 
-for (let i = 0; i < 10; i++) {
-    let printString = "";
-    for (let j = (i/2)*-1; j < 10; j++) {
-          printString = printString + "*";  
-        
-    }
-    console.log(printString);
-}
+//TODO
 
+// sum of odd numbers 0-100
+
+//TODO
 
 //DOM-----------------------------------------------------------
 
@@ -225,6 +219,6 @@ let h1 = document.getElementById("h1");
 
 for (let index = 0; index < 10; index++) {
     let p = document.createElement("p");
-    p.textContent = index;
+    p.innerText = index;
     h1.appendChild(p);
 }
