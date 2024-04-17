@@ -37,10 +37,16 @@ function showMath(){
     let innerText="";
 
     for (let index = 0; index < textRows.length; index++) {
-        innerText = innerText + textRows[index] + "\n";
-        
+        innerText = innerText + textRows[index] + "\n"; 
     }
+
     main.innerHTML = innerText;
     
 
+}
+
+for (let index = 0; index < 10000000; index++) {
+    console.info(index+"\r");
+
+    
 }
