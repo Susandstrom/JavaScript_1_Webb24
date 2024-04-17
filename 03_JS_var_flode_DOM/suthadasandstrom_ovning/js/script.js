@@ -24,3 +24,14 @@ else if (bobAge === robAge || bobAge===zobAge|| zobAge===robAge )
 {
     console.log("Det är lika mellan vissa personer.");
 }
+
+//***//
+for(let i=0; i <10; i++) {
+    let printString="";
+    for(let j=i*-1; j <=i; j++){
+        printString = printString + "*";
+    }
+    console.log(printString);
+}
+
+   
