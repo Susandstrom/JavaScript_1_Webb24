@@ -23,3 +23,5 @@ if (x>10) {
 }else if (x<10){
     console.log("smaller")
 }
+
+

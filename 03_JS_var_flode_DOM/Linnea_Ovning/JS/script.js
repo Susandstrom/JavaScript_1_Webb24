@@ -22,3 +22,19 @@ else if (bobAge == robAge || bobAge == zobAge || robAge == zobAge) {
     console.log("Det är lika mellan vissa")
 }
 
+
+for (let i = 0; i < 10; i++) {
+    let printString = "";
+    for (let j = i; j >= 0; j--) {
+        printString = printString + "*";
+    }
+    console.log(printString);
+}
+
+for (let i = 0; i < 10; i++) {
+    let printString = "";
+    for (let j = i* -1; j <= i; j++){
+        printString = printString + "*";
+    }
+    console.log(printString);
+}
