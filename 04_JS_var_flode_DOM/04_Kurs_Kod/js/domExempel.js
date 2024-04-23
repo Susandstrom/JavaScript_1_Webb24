@@ -25,7 +25,8 @@ console.log(myHeader.attributes);
 
 //add class 
 myHeader.classList.add("myHeaderClass");
-
+myHeader.innerText = "Inner Text\n";
+myHeader.textContent = "text content";
 //
 console.log(myHeader.classList);
 
@@ -48,13 +49,84 @@ for (let index = 0; index < 100; index++) {
 
 
 /*
-create element table
-create element row
-table append row
-create element header
-row append header (only in row 0)
-create element table data
-row ppend table data
+creating a table 
+we must have a reference to a body element
+we must create a table element
+we must create table rows and add them to table element
+in each row, table columns must be created. They are called table data in html
+first row, row with index 0 must have table headers instead of table data.
+lastly table element must be added to the body element.
 
-
+we are also changing some text in some specific elements along the way
 */
+
+
+//get body ref from html
+let documentBody = document.getElementById("body");
+//create table element
+let table = document.createElement("table");
+//change table styling
+table.style.border = "1px solid black";
+table.style.width = "25px";
+table.style.borderCollapse = "collapse";
+
+
+let rowCount = 10;
+let colCount = 5;
+//create rows with styling, and append row to table
+for (let row = 0; row < rowCount ; row++) {
+  let tableRow = document.createElement("tr");
+  tableRow.style.border = "1px solid black";
+  tableRow.style.width = "5px";
+  table.appendChild(tableRow);
+
+  //create table columns and add it to table row
+  for (let col = 0; col < colCount; col++) {
+    //if row index is 0 columns added is a table header otherwise it is tale data
+    if(row === 0){
+        let tableHeader = document.createElement("th");
+        tableHeader.setAttribute("id",`${row}${col}`);
+        tableHeader.innerText = "HEADER";
+        tableRow.appendChild(tableHeader);
+    }else{
+        let tableData  = document.createElement("td");
+        tableData.setAttribute("id",`${row}${col}`);
+        tableData.innerText = col;
+        tableRow.appendChild(tableData);
+    }
+
+  }
+}
+
+//append table element to html body
+documentBody.appendChild(table);
+
+//change every table data cell text in the table to row value
+for (let row = 0; row < rowCount; row++) {
+    for (let col = 0; col < colCount; col++) {
+        if(row !== 0){
+            document.getElementById(`${row}${col}`).innerText = row;
+        }
+    } 
+}
+
+//change text of an element with id 04
+let header4 = document.getElementById(`04`);
+header4.innerText = "ferf col";
+
+//change text of an element with id 34
+document.getElementById(`34`).innerText = "text";
+
+let allElements = document.getElementsByTagName("*");
+
+for (let index = 0; index < allElements.length; index++) {
+    allElements[index].style.backgroundColor = "red";
+    
+}
+
+Array(allElements).forEach(element => {
+    console.log(element);
+});
+
+
+console.log();
