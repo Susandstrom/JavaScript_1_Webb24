@@ -20,14 +20,6 @@ for (let row = 1; row <=size; row++) {
 }
 
 
-//Övning strängar
 
-let txt1 = "skärmskydd,499";
-let txt2 = "Mobiltelefon,299";
-let txt3 = "Telefonfodral, 89";
-let txt4 = "Laptop, 799";
-let txt5 = "Hörlurar,199";
-
-console.log(txt1);
 
 
