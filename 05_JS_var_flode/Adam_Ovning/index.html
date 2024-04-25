@@ -8,8 +8,17 @@
 </head>
 <body>
     
+    <div>
+        <button onclick="document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulbon.gif'">Turn On</button>
+        <img id="myImage" style="width: 100px;" src="https://www.w3schools.com/js/pic_bulboff.gif" alt="light">
+        
+        <button onclick="document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulboff.gif'">Turn Off</button>
+    </div>
+
+    <div id="knapp" onclick="changeImage()"><button id="btn">ON/OFF</button></div>
 
 
-    <script src="js/script.js"></script>
+
+    <script src="js/script.js" async defer></script>
 </body>
 </html>

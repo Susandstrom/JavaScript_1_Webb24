@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ENG">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>07_Funktioner_metoder_events</title>
+        <meta name="description" content="06_Funktioner_metoder_events">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css"> <!-- defines the css styling file used in this html page  -->
+        <style>h1 {background-color: antiquewhite;}</style> <!-- defines inline css styling -->
+    </head>
+    <body>
+        <nav>
+
+        </nav>
+
+        <h1 id="h1">07_Funktioner_metoder_events</h1>
+        <h3 id="counter"></h3>
+        <p id="message"></p>
+
+
+        <input type="text" id="userInput">
+        <button type="button" id="userInputButton" onclick="addUserInputParagraph();" onmousedown="backgroundRed();" onmouseup="backgroundBlue();">Send Text!</button>
+        <br>
+        <button type="button" id="addDish" onclick="addDish();" >addDish!</button>
+        <br>
+        <button type="button" id="dishCount" onclick="dishCount();" >dishCount!</button>
+        <br>
+        <button type="button" id="showDishes" onclick="showDishes();" >showDishes!</button>
+        <br>
+        <button type="button" id="removeDish" onclick="removeDish();" >removeDish!</button>
+        <br>
+        <button type="button" id="resetDishes" onclick="resetDishes();" >resetDishes!</button>
+
+        <article id="article"></article>
+        <script src="js/script.js" async defer></script> <!-- defines script file defined in this html page -->
+    </body>
+</html>
