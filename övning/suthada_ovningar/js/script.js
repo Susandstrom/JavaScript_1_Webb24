@@ -1,0 +1,2 @@
+
+//Övning Funktioner, objekt & 
