@@ -1,109 +1,112 @@
-//scope example
+let body = document.getElementById("body");
+//body.style.border = " 1px gray solid";
 
-function outerFunc() {
-  let num = 10;
-  function innerFunc() {//this function is not avaliable in the outer scope
-    console.log(num); // ​
+function makeNavbar() {
+  let nav = document.createElement("nav");
+  body.appendChild(nav);
+}
+
+function makeHeaderOne(text = "", id = "") {
+  let h1 = document.createElement("h1");
+  h1.innerText = text;
+  h1.setAttribute("id", id);
+  return h1;
+}
+
+function makeHeaderTwo(text = "", id = "") {
+  let h2 = document.createElement("h2");
+  h2.innerText = text;
+  h2.setAttribute("id", id);
+  return h2;
+}
+
+function makeTable(rowCount, colCount) {
+  //table, table row, table header, table data
+  let table = document.createElement("table");
+
+  //rows
+  for (let row = 0; row < rowCount; row++) {
+    let tr = document.createElement("tr");
+    table.appendChild(tr);
+    //col
+    for (let col = 0; col < colCount; col++) {
+      if (row === 0) {
+        let th = document.createElement("th");
+        th.setAttribute("id", row + ":" + col);
+        th.innerText = row + ":" + col;
+        tr.appendChild(th);
+      } else {
+        let td = document.createElement("td");
+        td.setAttribute("id", row + ":" + col);
+        td.innerText = row + ":" + col;
+        tr.appendChild(td);
+      }
+    }
   }
-  return innerFunc;
+  return table;
 }
-//outerFunc(); 
-let closureEx = outerFunc(); //outerFunc() return reference to innerFunc()
-closureEx(); // this will log num
 
-//funktioner ovning
-    //Skapa tre funktioner för att hantera maträtter. Istället för att använda listor eller arrayer kommer vi att använda funktioner för att spara och manipulera data
-
-    //en funktion för att lägga till en maträtt (counter++)
-let counter = 0; //represents dish count
-
-
-function addDish(){
-    counter = counter + 1; //the same as counter++
-    console.log("Dish added");
-    document.getElementById("message").innerText = "Dish added";
-    dishCount();
+function makeArticle(id, cls) {//cls is class
+  let article = document.createElement("article");
+  article.setAttribute("id", id);
+  article.setAttribute("class", cls);
+  return article;
 }
-    //en funktion för att räkna antalet tillagda maträtter (log(counter)) 
-function dishCount(){
-  //updates counter element text with value of counter variable
-  document.getElementById("counter").innerText = counter;
-  console.log(counter);
 
+function makeParagraph(text, id) {
+  let p = document.createElement("p");
+  p.innerText = text;
+  p.setAttribute("id", id);
+  return p;
 }
-  //en funktion för att visa alla tillagda maträtter (for(´${i}  maträtt´)).
-function showDishes(){
-  //clear article element from children
-  document.getElementById("article").replaceChildren();
-  for (let i = 0; i < counter; i++) {
-    //create new paragraph
-    let p = document.createElement("p");
-    //put text in new paragraph
-    p.innerText = `${i}  maträtt`;
-    //append paragraph to article
-    document.getElementById("article").appendChild(p);
-    console.log(`${i}  maträtt`);
+
+let isBuild = false;
+console.log("flag sets till false");
+//building webpage
+function buildWebsite() {
+
+  if (isBuild === false) {
+    makeNavbar();
+    body.appendChild(makeHeaderOne("04_JS_var_flode_DOM", "h1"));
+    body.appendChild(makeHeaderTwo("Table with table rows, headers, and rows"));
+
+    let table = makeTable(5, 5);
+    body.appendChild(table);
+
+    let article1 = makeArticle("article_1", "articles");
+    article1.appendChild(makeHeaderOne("this is header", ""));
+    article1.style.backgroundColor = "rgb(237, 189, 206)";
+
+    let paragraph1Text = "this is paragraph 1"
+    article1.appendChild(makeParagraph(paragraph1Text, ""));
+    article1.appendChild(makeParagraph("this is paragraph 2", ""));
+    body.appendChild(article1);
+
+    let article2 = makeArticle("article_2", "articles");
+    article2.appendChild(makeHeaderOne("this is header", ""));
+    article2.appendChild(makeParagraph("this is paragraph 1", ""));
+    article2.appendChild(makeParagraph("this is paragraph 2", ""));
+    body.appendChild(article2);
+    isBuild = true;
+    console.log("flag sets till true");
+
+    let allPs = document.getElementsByTagName("p");
+    for (let index = 0; index < allPs.length; index++) {
+      allPs[index].style.border = "1px solid black";
+    }
   }
-  dishCount();
 }
 
-function removeDish(){
-  counter = counter - 1; //the same as counter--
-  console.log("Dish removed");
-  document.getElementById("message").innerText = "Dish removed";
-  dishCount();
+function clearWebpage() {
+  let btn1 = document.getElementById("button1");
+  let btn2 = document.getElementById("button2");
+  let script = document.getElementById("script");
+  body.replaceChildren();
+  body.appendChild(script);
+  body.appendChild(btn1);
+  body.appendChild(btn2);
+  isBuild = false;
+  console.log("flag sets till false");
 }
-
-function resetDishes(){
-  counter = 0;
-  console.log("Dishes reset")
-  document.getElementById("message").innerText = "Dishes reset";
-  dishCount();
-}
-
-//excuting functions
-addDish();
-addDish();
-addDish();
-addDish();
-dishCount();
-addDish();
-resetDishes();
-addDish();
-addDish();
-dishCount();
-showDishes();
-
-
-// onclick example example
-
-function addUserInputParagraph(){
-  //get reference to input field 
-  let userInput = document.getElementById("userInput");
-  //get text from input field
-  let userInputText = userInput.value;
-  //create paragraph element
-  let newParagraph = document.createElement("p");
-  //add text from input field to the paragraph
-  newParagraph.innerText = userInputText;
-  //get reference to body element
-  let body = document.querySelector("body");
-  //add paragraph to the body element
-  body.appendChild(newParagraph);
-}
-
-function backgroundRed(){
-    //get reference to body element
-    let body = document.querySelector("body");
-    body.style.backgroundColor="rgba(247, 0, 63, 0.41)";
-}
-
-function backgroundBlue(){
-  //get reference to body element
-  let body = document.querySelector("body");
-  body.style.backgroundColor="rgba(0, 0, 255, 0.33)";
-}
-
-
 
 
