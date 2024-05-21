@@ -21,8 +21,8 @@ function sum(a,b){
     return a+b;
 }
 
-let result = sum(2,3);
-console.log("Summan är:",result);
+let results = sum(2,3);
+console.log("Summan är:",results);
 
 //celsius till farenheit 
 
@@ -56,7 +56,7 @@ let hittaMax = (listOfNumbers) => {
 let randomList = [214,3425,25676,246354758,7865,543645]
 hittaMax(randomList);
 
-//create randomlist - funktion/arrow
+//create randomlist - funktion/arrow, Math.floor(gör att talen blir heltal)
 let createRandomList = (listLength, maxValue) => {
     let outList = [];
     for (let i = 0; i < listLength; i++){
@@ -66,3 +66,59 @@ let createRandomList = (listLength, maxValue) => {
     return outList;
 }
 console.log(createRandomList(10,25));
+
+//?
+function add2(a){
+    return a+2;
+}
+function multiply5(a){
+    return a *5;
+}
+
+let result = multiply5(add2(10));
+
+console.log(result);
+
+//??
+let text = "This is a text".toUpperCase();
+let textReplace = text.replace("this","that");
+let textReverse = textReplace.concat("New text added");
+console.log(textReverse);
+
+let text2 = "This is another text".toUpperCase().replace("THIS","THAT")
+
+//SYNC
+//let apiResponse = simpleFetch("https://catfact.ninja/fact");
+//console.log(apiResponse);
+
+//fetch - bild 
+function simpleFetch(url) {
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Något gick fel -' + Response.status);
+
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data hämtad:', data);
+            let img = document.getElementById("dog");
+            img.setAttribute("src", data["message"]);
+            return data;
+        })
+        .catch(error => {
+            console.error('Fetch-fel:', error);
+        })
+}
+
+//SYNC & API - bild
+
+function showData(){
+    let apiResponse = simpleFetch("https://dog.ceo/api/breeds/image/random");
+}
+
+function getUrl(){
+    let url = document.getElementById("url").value;
+    let apiResponse = simpleFetch("url");
+}
