@@ -34,3 +34,20 @@ for (let index = 0; index < condition; index++) {
     console.log(index%8);
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

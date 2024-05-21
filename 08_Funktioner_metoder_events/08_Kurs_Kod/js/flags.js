@@ -8,8 +8,7 @@ let button2Flag = true;
 let button3Flag = true;
 let button4Flag = false;
 
-b1.style.backgroundColor = "yellow";
-b2.style.backgroundColor = "green";
+b1.style.backgroundColor = "yellow";b2.style.backgroundColor = "green";
 b3.style.backgroundColor = "green";
 b4.style.backgroundColor = "red";
 

@@ -12,9 +12,11 @@
        <!-- <style>h1 {background-color: antiquewhite;}</style>  defines inline css styling -->
     </head>
     <body id="body">
-        <button type="button" onclick="buildWebsite();" id="button1">Build Webpage</button>
-        <button type="button" onclick="clearWebpage();" id="button2">Clear Webpage</button>
-
+        <button type="button" onclick="forward();" id="button1">forward</button>
+        <button type="button" onclick="backwards();" id="button2">backwards</button>
+        <button type="button" onclick="stop();" id="button3">stop</button>
+        
+        <input type="range" id="slider" min="0" max="100"  onchange="changeMatrixSize();">
         <script id="script" src="js/script.js" async defer></script> <!-- defines script file defined in this html page -->
     </body>
 </html>

@@ -1,4 +1,5 @@
 
+<<<<<<< Updated upstream
 // one row comment
 // tregtdhfd
 
@@ -133,3 +134,17 @@ let thirdVariable = ((!(true) || false) && 5 != 8);
 let ferfVariable = !((!firstVariable && secondVariable) || thirdVariable);
 
 console.log("and the winner is! " + ferfVariable);
+=======
+//one row comment
+//tregtghd
+
+/*This is a multi line comment*/
+
+
+
+
+let summa = 2+2 ;
+
+console.log(summa);
+
+>>>>>>> Stashed changes

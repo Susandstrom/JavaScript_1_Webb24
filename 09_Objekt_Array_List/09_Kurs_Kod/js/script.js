@@ -1,112 +1,135 @@
-let body = document.getElementById("body");
-//body.style.border = " 1px gray solid";
+//Array and lists
 
-function makeNavbar() {
-  let nav = document.createElement("nav");
-  body.appendChild(nav);
+let myArray = [1,2,3,4,5,6,7,8,9];
+console.log(myArray);
+console.log("myArray length is: " + myArray.length);
+//define length variable
+let lengd = myArray.length;
+console.log("myArray length is: " + lengd);
+//get value on index 0
+let valueOnIndexZero = myArray[0];
+console.log("value on index zero: " + valueOnIndexZero);
+//get last index value
+let valueOnLastIndex = myArray[lengd-1];
+console.log("last index value is: " + valueOnLastIndex);
+//adding element at the end of the list
+myArray.push("10");
+console.log(myArray);
+console.log("myArray length is: " + lengd);
+console.log("myArray length is: " + myArray.length);
+//update lengd var
+lengd = myArray.length;
+console.log("lengd var after updated value, after push " + lengd);
+//deleting last element in the list
+let deletedLastIndex = myArray.pop();
+console.log("last element deleted " + myArray);
+console.log("last index value that was deleted " + deletedLastIndex);
+
+let ontherDeletedLastIndex = myArray.pop();
+console.log("last element deleted " + myArray);
+console.log("another last index value that was deleted " + ontherDeletedLastIndex);
+console.log("last index value that was deleted " + deletedLastIndex);
+
+//pushing new value to myArrey
+let newValue = 100;
+myArray.push(newValue);
+console.log(myArray);
+//for loop with push() pop();
+for(let index = 0; index <= myArray.length-1; index++){
+  console.log("We are on index: " + index);
+  console.log("Value is: " + myArray[index]);
 }
-
-function makeHeaderOne(text = "", id = "") {
-  let h1 = document.createElement("h1");
-  h1.innerText = text;
-  h1.setAttribute("id", id);
-  return h1;
+//for loop that prints out values from the end
+for(let index = myArray.length-1; index >= 0; index--){
+  console.log("We are on index: " + index);
+  console.log("Value is: " + myArray[index]);
 }
+//gives undefined, index does not exist
+console.log(myArray[-1]);
+console.log(myArray[1000]);
+//0 index and length-1 index is the same
+let arr = ["B"];
 
-function makeHeaderTwo(text = "", id = "") {
-  let h2 = document.createElement("h2");
-  h2.innerText = text;
-  h2.setAttribute("id", id);
-  return h2;
-}
+//matrix with double for loop and event
+function changeMatrixSize(){
 
-function makeTable(rowCount, colCount) {
-  //table, table row, table header, table data
-  let table = document.createElement("table");
-
-  //rows
-  for (let row = 0; row < rowCount; row++) {
-    let tr = document.createElement("tr");
-    table.appendChild(tr);
-    //col
-    for (let col = 0; col < colCount; col++) {
-      if (row === 0) {
-        let th = document.createElement("th");
-        th.setAttribute("id", row + ":" + col);
-        th.innerText = row + ":" + col;
-        tr.appendChild(th);
-      } else {
-        let td = document.createElement("td");
-        td.setAttribute("id", row + ":" + col);
-        td.innerText = row + ":" + col;
-        tr.appendChild(td);
-      }
+  let slider = document.getElementById("slider");
+  slider.style.accentColor = "rgb(254,124,0)";
+  let rows = slider.value;
+  let cols = slider.value;
+  //create empty outer list 
+  let matrix = [];
+  
+  for(let i = 0; i < rows; i++){
+    //create empty inner list
+    let row = [];
+    for(let j = 0; j < cols; j++){
+      //push values to inner list
+      row.push(j);
     }
+    //push inner list to outer list
+    matrix.push(row);
   }
-  return table;
+  
+  console.log(matrix);
 }
 
-function makeArticle(id, cls) {//cls is class
-  let article = document.createElement("article");
-  article.setAttribute("id", id);
-  article.setAttribute("class", cls);
-  return article;
+console.log("array before splicing: " + myArray);
+//delete index values in interval 2-5
+//end index is not included in the operation
+//only index 2,3,4 is going to be deleted
+console.log("splicing index interval 2-5");
+let deletedArrayItems = myArray.splice(2,5);
+console.log("this is the deleted part: " + deletedArrayItems);
+console.log("this is whats left in myArray: " +myArray);
+
+//replace elements in interval 0-2
+console.log("replace elements in interval 0-2");
+myArray.splice(0,2,0,0);
+console.log("myArray after replcaing interval with zero " + myArray);
+
+//slice values in index interval 0-3
+let slicedArrayItems =  myArray.slice(0,3);
+console.log("myArray after slicing index interval 0-3 " + myArray);
+console.log("sliced items in index interval 0-3 " + slicedArrayItems);
+
+
+//delete the midlle index in the array
+
+//let listMiddleIndex = (myArray.length-1)/2;
+//myArray.splice(listMiddleIndex, listMiddleIndex+1 );
+
+//for loop Vs while loop
+
+for(let i = 0; i < 10; i++){
+  console.log(i);
 }
 
-function makeParagraph(text, id) {
-  let p = document.createElement("p");
-  p.innerText = text;
-  p.setAttribute("id", id);
-  return p;
+console.log(";;;;;;;;;;;;;;;;;;")
+let m = 0;
+while(m < 10){
+  console.log(m);
+  m++;
 }
 
-let isBuild = false;
-console.log("flag sets till false");
-//building webpage
-function buildWebsite() {
+//while loop with event
 
-  if (isBuild === false) {
-    makeNavbar();
-    body.appendChild(makeHeaderOne("04_JS_var_flode_DOM", "h1"));
-    body.appendChild(makeHeaderTwo("Table with table rows, headers, and rows"));
+let isRunning = true;
+let counter = 0;
+let increment = 1;
 
-    let table = makeTable(5, 5);
-    body.appendChild(table);
-
-    let article1 = makeArticle("article_1", "articles");
-    article1.appendChild(makeHeaderOne("this is header", ""));
-    article1.style.backgroundColor = "rgb(237, 189, 206)";
-
-    let paragraph1Text = "this is paragraph 1"
-    article1.appendChild(makeParagraph(paragraph1Text, ""));
-    article1.appendChild(makeParagraph("this is paragraph 2", ""));
-    body.appendChild(article1);
-
-    let article2 = makeArticle("article_2", "articles");
-    article2.appendChild(makeHeaderOne("this is header", ""));
-    article2.appendChild(makeParagraph("this is paragraph 1", ""));
-    article2.appendChild(makeParagraph("this is paragraph 2", ""));
-    body.appendChild(article2);
-    isBuild = true;
-    console.log("flag sets till true");
-
-    let allPs = document.getElementsByTagName("p");
-    for (let index = 0; index < allPs.length; index++) {
-      allPs[index].style.border = "1px solid black";
-    }
-  }
+function count(){
+  counter= counter + increment;
+  console.log(counter);
 }
 
-function clearWebpage() {
-  let btn1 = document.getElementById("button1");
-  let btn2 = document.getElementById("button2");
-  let script = document.getElementById("script");
-  body.replaceChildren();
-  body.appendChild(script);
-  body.appendChild(btn1);
-  body.appendChild(btn2);
-  isBuild = false;
-  console.log("flag sets till false");
+function backwards(){
+  increment = -1;
 }
-
-
+function forward(){
+  increment = 1;
+}
+function stop(){
+  isRunning = false;
+}
+//setInterval(count, 1);
